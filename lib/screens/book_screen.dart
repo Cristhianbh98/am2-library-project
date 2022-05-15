@@ -1,7 +1,7 @@
+import 'package:am2_library_project/widgets/detail_table_widget.dart';
 import 'package:am2_library_project/widgets/main_app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../model/book.dart';
 
 class BookScreen extends StatefulWidget {
@@ -21,13 +21,13 @@ class _BookScreenState extends State<BookScreen> {
     return Scaffold(
       appBar: MainAppBar(title: book.title),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromRGBO(145, 129, 242, 1),
-              Color.fromARGB(255, 73, 34, 163),
+              Theme.of(context).primaryColorLight,
+              Theme.of(context).primaryColorDark,
             ],
           ),
         ),
@@ -35,63 +35,27 @@ class _BookScreenState extends State<BookScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SvgPicture.asset(
-              'images/book.svg'
+            SvgPicture.asset("images/book.svg"),
+            const SizedBox(height: 30.0),
+            Text(
+              book.title,
+              style: Theme.of(context).textTheme.headline1,
             ),
-            const SizedBox(height: 40.0),
-            Text(book.title),
             const SizedBox(height: 20.0),
-            const Text("Descripción"),
-            Text(book.description),
+            Text(
+              "Descripción",
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            Text(
+              book.description,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
             const SizedBox(height: 20.0),
-            const Text("Detalles"),
-            Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Text("ID:"),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(book.id)
-                ),                
-              ],
-            ),
-            Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Text("Author:"),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(book.author)
-                ),                
-              ],
-            ),
-            Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Text("Categoria:"),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(book.category)
-                ),                
-              ],
-            ),
-            Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Text("Fecha:"),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(DateFormat('DD/MM/yyyy').format(book.createAt))
-                ),                
-              ],
+            DetailTableWidget(
+              id: book.id, 
+              author: book.author, 
+              category: book.category, 
+              createAt: book.createAt,
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:am2_library_project/themes/style.dart';
 import 'package:am2_library_project/widgets/main_app_bar.dart';
 import 'package:am2_library_project/screens/book_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: primaryTheme,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -32,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
