@@ -1,7 +1,10 @@
 import 'package:am2_library_project/widgets/main_app_bar.dart';
 import 'package:am2_library_project/screens/book_screen.dart';
+import 'package:am2_library_project/widgets/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:am2_library_project/model/book.dart';
+
+import 'package:am2_library_project/widgets/category_list_widget.dart';
 
 class MainNavigationMenuScreen extends StatefulWidget {
   const MainNavigationMenuScreen({Key? key}) : super(key: key);
@@ -19,7 +22,7 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
     });
   }
 
-  static const List<String> _titles = ["Home", "Categorias", "Favoritos", "Perfil"];
+  static const List<String> _titles = ["Inicio", "Categorias", "Favoritos", "Perfil"];
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +48,7 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
         },
         child: const Text('Go to book'),
       ),
-      const Text(
-        'Index 2: Categorias',
-      ),
+      const CategoryListWidget(),
       const Text(
         'Index 3: Favoritos',
       ),
@@ -56,36 +57,37 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
       ),
     ];
 
-    return Scaffold(
-      appBar: MainAppBar(title: _titles.elementAt(_selectedIndex)),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.home),
-            label: "Inicio",
-            backgroundColor: Theme.of(context).primaryColorDark,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.category),
-            label: "Categorias",
-            backgroundColor: Theme.of(context).primaryColorDark,            
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.star),
-            label: "Favoritos",            
-            backgroundColor: Theme.of(context).primaryColorDark,            
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.person),
-            label: "Perfil",            
-            backgroundColor: Theme.of(context).primaryColorDark,
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+    return GradientBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: MainAppBar(title: _titles.elementAt(_selectedIndex)),
+        body: _widgetOptions.elementAt(_selectedIndex),      
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.home),
+              label: "Inicio",
+              backgroundColor: Theme.of(context).primaryColorDark,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.category),
+              label: "Categorias",
+              backgroundColor: Theme.of(context).primaryColorDark,            
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.star),
+              label: "Favoritos",            
+              backgroundColor: Theme.of(context).primaryColorDark,            
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.person),
+              label: "Perfil",            
+              backgroundColor: Theme.of(context).primaryColorDark,
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
