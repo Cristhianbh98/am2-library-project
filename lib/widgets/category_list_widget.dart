@@ -1,5 +1,4 @@
 import 'package:am2_library_project/model/category.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CategoryListWidget extends StatefulWidget {
