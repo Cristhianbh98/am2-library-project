@@ -8,7 +8,7 @@ class DetailTableWidget extends StatelessWidget {
   final DateTime createAt;
 
   const DetailTableWidget({
-    Key? key, 
+    Key? key,
     required this.id,
     required this.author,
     required this.category,
@@ -35,12 +35,11 @@ class DetailTableWidget extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 7,
-              child: Text(
-                id,
-                style: Theme.of(context).textTheme.bodyText1,
-              )
-            ),                
+                flex: 7,
+                child: Text(
+                  id,
+                  style: Theme.of(context).textTheme.bodyText1,
+                )),
           ],
         ),
         Row(
@@ -58,7 +57,7 @@ class DetailTableWidget extends StatelessWidget {
                 author,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-            ),                
+            ),
           ],
         ),
         Row(
@@ -76,7 +75,7 @@ class DetailTableWidget extends StatelessWidget {
                 category,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-            ),                
+            ),
           ],
         ),
         Row(
@@ -89,12 +88,11 @@ class DetailTableWidget extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 7,
-              child: Text(
-                DateFormat("DD/MM/yyyy").format(createAt),
-                style: Theme.of(context).textTheme.bodyText1,
-              )
-            ),                
+                flex: 7,
+                child: Text(
+                  DateFormat("DD/MM/yyyy").format(createAt),
+                  style: Theme.of(context).textTheme.bodyText1,
+                )),
           ],
         ),
       ],
