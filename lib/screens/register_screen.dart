@@ -31,6 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    style: const TextStyle(color: Colors.white),
                     controller: nameController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),
@@ -44,7 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
-                    obscureText: true,
+                    style: const TextStyle(color: Colors.white),
                     controller: emailController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),
@@ -58,6 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
+                    style: const TextStyle(color: Colors.white),
                     obscureText: true,
                     controller: passwordController,
                     decoration: const InputDecoration(
@@ -72,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
-                    obscureText: true,
+                    style: const TextStyle(color: Colors.white),
                     controller: firstnameController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),
@@ -86,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
-                    obscureText: true,
+                    style: const TextStyle(color: Colors.white),
                     controller: lastnameController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),

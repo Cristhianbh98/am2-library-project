@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    style: const TextStyle(color: Colors.white),
                     controller: nameController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),
@@ -48,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
+                    style: const TextStyle(color: Colors.white),
                     obscureText: true,
                     controller: passwordController,
                     decoration: const InputDecoration(
