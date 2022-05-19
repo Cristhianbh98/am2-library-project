@@ -17,6 +17,7 @@ class _BookListWidget extends State<BookListWidget> {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
+      shrinkWrap: true,
       children: widget.books.map((book) {
         return Padding(
           padding: const EdgeInsets.all(20.0),      

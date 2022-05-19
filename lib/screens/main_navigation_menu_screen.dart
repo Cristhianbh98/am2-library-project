@@ -1,5 +1,5 @@
 import 'package:am2_library_project/widgets/Home_Widget.dart';
-import 'package:am2_library_project/widgets/book_list_wdget.dart';
+import 'package:am2_library_project/widgets/book_list_widget.dart';
 import 'package:am2_library_project/widgets/main_app_bar.dart';
 import 'package:am2_library_project/screens/book_screen.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';

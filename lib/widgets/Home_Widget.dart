@@ -4,7 +4,7 @@ import 'package:am2_library_project/model/book.dart';
 import 'package:am2_library_project/screens/book_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'book_list_wdget.dart';
+import 'book_list_widget.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({
@@ -57,10 +57,9 @@ class _HomeWidget extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BookListWidget(books: books);
-  }
-}/*
-Container(
+    return Column(
+      children: [
+        Container(
           height: 50,
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -111,4 +110,9 @@ Container(
               ),
             ],
           ),
-        ),/*
+        ),
+        BookListWidget(books: books),
+      ],
+    );
+  }
+}
