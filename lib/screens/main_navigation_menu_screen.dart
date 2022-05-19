@@ -1,11 +1,11 @@
-import 'package:am2_library_project/widgets/Home_Widget.dart';
+import 'package:am2_library_project/widgets/home_widget.dart';
 import 'package:am2_library_project/widgets/book_list_widget.dart';
 import 'package:am2_library_project/widgets/main_app_bar.dart';
 import 'package:am2_library_project/screens/book_screen.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:am2_library_project/model/book.dart';
-import 'package:am2_library_project/widgets/Home_Widget.dart';
+import 'package:am2_library_project/widgets/home_widget.dart';
 
 import 'package:am2_library_project/widgets/category_list_widget.dart';
 

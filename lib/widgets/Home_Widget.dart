@@ -1,8 +1,4 @@
-import 'dart:html';
-
 import 'package:am2_library_project/model/book.dart';
-import 'package:am2_library_project/screens/book_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'book_list_widget.dart';
 
