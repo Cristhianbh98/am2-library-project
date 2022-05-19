@@ -59,4 +59,56 @@ class _HomeWidget extends State<HomeWidget> {
   Widget build(BuildContext context) {
     return BookListWidget(books: books);
   }
-}
+}/*
+Container(
+          height: 50,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(145, 129, 242, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                width: 200,
+                child: const Center(
+                    child: Text(
+                  'Cultura',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                )),
+              ),
+              Container(
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(145, 129, 242, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  'Terror',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                )),
+              ),
+              Container(
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(145, 129, 242, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  'Fantasia',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                )),
+              ),
+              Container(
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(145, 129, 242, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  'Comedia',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                )),
+              ),
+            ],
+          ),
+        ),/*
