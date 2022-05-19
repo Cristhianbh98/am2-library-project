@@ -9,7 +9,6 @@ class CategoryListWidget extends StatefulWidget {
 }
 
 class _CategoryListWidget extends State<CategoryListWidget> {
-
   final List<CategoryBook> categories = [
     CategoryBook(title: "Ciencias"),
     CategoryBook(title: "Tecnología"),
@@ -36,10 +35,12 @@ class _CategoryListWidget extends State<CategoryListWidget> {
               style: Theme.of(context).textTheme.bodyText1,
             ),
             style: ButtonStyle(
-              backgroundColor: MaterialStateColor.resolveWith((states) => const Color.fromRGBO(0,0,0,.1)),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0))),
-              overlayColor: MaterialStateColor.resolveWith((states) => const Color.fromRGBO(0,0,0,.3))
-            ),
+                backgroundColor: MaterialStateColor.resolveWith(
+                    (states) => const Color.fromRGBO(0, 0, 0, .1)),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0))),
+                overlayColor: MaterialStateColor.resolveWith(
+                    (states) => const Color.fromRGBO(0, 0, 0, .3))),
           ),
         );
       }).toList(),
