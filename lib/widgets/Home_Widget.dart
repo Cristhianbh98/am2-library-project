@@ -1,4 +1,5 @@
 import 'package:am2_library_project/model/book.dart';
+import 'package:am2_library_project/widgets/category_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:am2_library_project/model/category.dart';
 import 'book_list_widget.dart';
@@ -74,24 +75,7 @@ class _HomeWidget extends State<HomeWidget> {
             children: categories.map((category){
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    category.title,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateColor.resolveWith(
-                      (states) => const Color.fromRGBO(0, 0, 0, .1),
-                    ),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
-                    ),
-                    overlayColor: MaterialStateColor.resolveWith(
-                      (states) => const Color.fromRGBO(0, 0, 0, .3),
-                    ),
-                  ),
-                ),
+                child: CategoryButtonWidget(text: category.title),
               );
             }).toList(),
           ),
