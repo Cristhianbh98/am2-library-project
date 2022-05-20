@@ -16,7 +16,7 @@ class _CategoryListWidget extends State<CategoryListWidget> {
     CategoryBook(title: "Documentales"),
     CategoryBook(title: "Terror"),
     CategoryBook(title: "Manga"),
-    CategoryBook(title: "Comedi"),
+    CategoryBook(title: "Comedia"),
     CategoryBook(title: "Tragedia"),
   ];
 
