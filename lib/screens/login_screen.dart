@@ -1,3 +1,5 @@
+import 'package:am2_library_project/screens/main_navigation_menu_screen.dart';
+import 'package:am2_library_project/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
@@ -16,94 +18,107 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return GradientBackground(
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: ListView(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: ListView(
+          children: <Widget>[
+            SvgPicture.asset("images/sir.svg"),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+            ),
+            Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  'Iniciar Sesión',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                )),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.white, width: 1.0)),
+                  labelText: 'Correo',
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                obscureText: true,
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.white, width: 1.0)),
+                  labelText: 'Contraseña',
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                //forgot password screen
+              },
+              child: const Text(
+                'Recordar contraseña',
+              ),
+            ),
+            Container(
+                height: 50,
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Theme.of(context).primaryColor)),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainNavigationMenuScreen(),
+                      ),
+                      (route) => false
+                    );
+                  },
+                )),
+            Row(
               children: <Widget>[
-                SvgPicture.asset("images/sir.svg"),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      'Iniciar Sesión',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    )),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.white),
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                      labelStyle: TextStyle(color: Colors.white),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      labelText: 'Correo',
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.white),
-                    obscureText: true,
-                    controller: passwordController,
-                    decoration: const InputDecoration(
-                      labelStyle: TextStyle(color: Colors.white),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      labelText: 'Contraseña',
-                    ),
-                  ),
+                const Text(
+                  '¿No tienes cuenta?',
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
                 TextButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
                   child: const Text(
-                    'Recordar contraseña',
+                    'Registrarse',
+                    style: TextStyle(fontSize: 15),
                   ),
-                ),
-                Container(
-                    height: 50,
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => Theme.of(context).primaryColor)),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(fontSize: 20),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterScreen(),
                       ),
-                      onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
-                      },
-                    )),
-                Row(
-                  children: <Widget>[
-                    const Text(
-                      '¿No tienes cuenta?',
-                      style: TextStyle(fontSize: 15, color: Colors.white),
-                    ),
-                    TextButton(
-                      child: const Text(
-                        'Registrarse',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      onPressed: () {
-                        //signup screen
-                      },
-                    )
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
+                      (route) => false
+                    );
+                  },
+                )
               ],
-            )));
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
