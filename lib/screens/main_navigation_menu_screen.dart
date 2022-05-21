@@ -6,6 +6,7 @@ import 'package:am2_library_project/widgets/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:am2_library_project/model/book.dart';
 import 'package:am2_library_project/widgets/home_widget.dart';
+import 'package:am2_library_project/widgets/Perfil_widget.dart';
 
 import 'package:am2_library_project/widgets/category_list_widget.dart';
 
@@ -60,7 +61,7 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
       const HomeWidget(),
       const CategoryListWidget(),
       BookListWidget(books: books),
-      const Text('Index 3: Perfil'),
+      const Perfilwidget(),
     ];
 
     return GradientBackground(
