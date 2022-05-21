@@ -1,13 +1,11 @@
 import 'package:am2_library_project/widgets/home_widget.dart';
 import 'package:am2_library_project/widgets/book_list_widget.dart';
 import 'package:am2_library_project/widgets/main_app_bar.dart';
-import 'package:am2_library_project/screens/book_screen.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:am2_library_project/model/book.dart';
-import 'package:am2_library_project/widgets/home_widget.dart';
 import 'package:am2_library_project/widgets/Perfil_widget.dart';
-
+import 'package:am2_library_project/model/category.dart';
 import 'package:am2_library_project/widgets/category_list_widget.dart';
 
 class MainNavigationMenuScreen extends StatefulWidget {
@@ -55,11 +53,22 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
     ),
   ];
 
+  final List<CategoryBook> categories = [
+    CategoryBook(title: "Ciencias"),
+    CategoryBook(title: "Tecnología"),
+    CategoryBook(title: "Matematicas"),
+    CategoryBook(title: "Documentales"),
+    CategoryBook(title: "Terror"),
+    CategoryBook(title: "Manga"),
+    CategoryBook(title: "Comedia"),
+    CategoryBook(title: "Tragedia"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> _widgetOptions = <Widget>[
       const HomeWidget(),
-      const CategoryListWidget(),
+      CategoryListWidget(categories: categories),
       BookListWidget(books: books),
       const Perfilwidget(),
     ];

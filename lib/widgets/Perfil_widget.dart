@@ -33,7 +33,7 @@ class _Perfilwidget extends State<Perfilwidget> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Panchanazzz',
+                      'Luis Méndez',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     )),
                 TextButton(

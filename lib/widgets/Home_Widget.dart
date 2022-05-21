@@ -1,5 +1,8 @@
+// ignore: file_names
 import 'package:am2_library_project/model/book.dart';
+import 'package:am2_library_project/widgets/category_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:am2_library_project/model/category.dart';
 import 'book_list_widget.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -51,60 +54,31 @@ class _HomeWidget extends State<HomeWidget> {
     ),
   ];
 
+  final List<CategoryBook> categories = [
+    CategoryBook(title: "Ciencias"),
+    CategoryBook(title: "Tecnología"),
+    CategoryBook(title: "Matematicas"),
+    CategoryBook(title: "Documentales"),
+    CategoryBook(title: "Terror"),
+    CategoryBook(title: "Manga"),
+    CategoryBook(title: "Comedia"),
+    CategoryBook(title: "Tragedia"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: 50,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(145, 129, 242, 1),
-                    borderRadius: BorderRadius.circular(10)),
-                width: 200,
-                child: const Center(
-                    child: Text(
-                  'Cultura',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )),
-              ),
-              Container(
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(145, 129, 242, 1),
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Center(
-                    child: Text(
-                  'Terror',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )),
-              ),
-              Container(
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(145, 129, 242, 1),
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Center(
-                    child: Text(
-                  'Fantasia',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )),
-              ),
-              Container(
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(145, 129, 242, 1),
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Center(
-                    child: Text(
-                  'Comedia',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )),
-              ),
-            ],
+            children: categories.map((category) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: CategoryButtonWidget(text: category.title),
+              );
+            }).toList(),
           ),
         ),
         BookListWidget(books: books),
