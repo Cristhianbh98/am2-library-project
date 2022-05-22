@@ -25,8 +25,7 @@ class _BookScreenState extends State<BookScreen> {
         appBar: MainAppBar(title: book.title),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: ListView(
             children: [
               SvgPicture.asset("images/book.svg"),
               const SizedBox(height: 30.0),

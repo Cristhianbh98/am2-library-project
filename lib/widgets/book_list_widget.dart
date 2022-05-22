@@ -40,7 +40,7 @@ class _BookListWidget extends State<BookListWidget> {
                 children: [
                   SvgPicture.asset(
                     "images/book.svg", 
-                    height: 90.0,
+                    height: 80.0,
                   ),
                   Text(
                     book.title,
