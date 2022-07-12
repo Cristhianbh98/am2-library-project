@@ -1,9 +1,17 @@
+import 'dart:ffi';
+
+import 'package:am2_library_project/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
 
 class Perfilwidget extends StatefulWidget {
-  const Perfilwidget({Key? key}) : super(key: key);
+  const Perfilwidget({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final Map user;
 
   @override
   State<Perfilwidget> createState() => _Perfilwidget();
@@ -13,57 +21,77 @@ class _Perfilwidget extends State<Perfilwidget> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  void logout() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute( builder: (context) => const LoginScreen()),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GradientBackground(
-        child: Scaffold(
-            backgroundColor: Color.fromARGB(0, 247, 240, 240),
-            body: ListView(
-              children: <Widget>[
-                SvgPicture.asset(
-                  "images/perfil.svg",
-                  height: 250,
-                  width: 300,
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(0, 247, 240, 240),
+        body: ListView(
+          children: <Widget>[
+            const SizedBox(height: 40.0),
+            CircleAvatar(              
+              radius: 50,
+              child: ClipRRect(
+                child: Image.network(widget.user['image'], fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Text(
+                widget.user['firstName'] + ' ' + widget.user['lastName'],
+                style: const TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
+              ),
+            ),
+            const SizedBox(height: 20.0),
+            Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Editar Cuenta',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                 ),
-                Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      'Luis Méndez',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    )),
-                TextButton(
-                  onPressed: () {
-                    //Eliminar cuenta
-                  },
-                  child: const Text(
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
                     'Eliminar cuenta',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    //Cambiar contraseña
-                  },
-                  child: const Text(
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
                     'Cambiar contraseña',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    //Cerrar sesión
-                  },
-                  child: const Text(
+                ElevatedButton(
+                  onPressed: logout,
+                  child: Text(
                     'Cerrar sesión',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ],
-            )));
+            ),            
+          ],
+        ),
+      ),
+    );
   }
 }

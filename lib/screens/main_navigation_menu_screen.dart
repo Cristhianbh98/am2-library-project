@@ -9,7 +9,12 @@ import 'package:am2_library_project/model/category.dart';
 import 'package:am2_library_project/widgets/category_list_widget.dart';
 
 class MainNavigationMenuScreen extends StatefulWidget {
-  const MainNavigationMenuScreen({Key? key}) : super(key: key);
+  const MainNavigationMenuScreen({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final Map user;
 
   @override
   State<MainNavigationMenuScreen> createState() =>
@@ -70,7 +75,7 @@ class _MainNavigationMenuScreenState extends State<MainNavigationMenuScreen> {
       const HomeWidget(),
       CategoryListWidget(categories: categories),
       BookListWidget(books: books),
-      const Perfilwidget(),
+      Perfilwidget(user: widget.user),
     ];
 
     return GradientBackground(

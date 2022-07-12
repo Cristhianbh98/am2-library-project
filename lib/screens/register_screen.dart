@@ -110,13 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           (states) => Theme.of(context).primaryColor)),
                   child: const Text('Registrarse'),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MainNavigationMenuScreen(),
-                      ),
-                      (route) => false
-                    );
+                    
                   },
                 )),
             Row(
