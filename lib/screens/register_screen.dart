@@ -1,8 +1,9 @@
-import 'package:am2_library_project/screens/login_screen.dart';
-import 'package:am2_library_project/screens/main_navigation_menu_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
+
+import 'package:am2_library_project/helpers/navigate.dart';
+import 'package:am2_library_project/services/auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -12,11 +13,35 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController firstnameController = TextEditingController();
-  TextEditingController lastnameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+
+  final EdgeInsetsGeometry defaultEdges = const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0);
+  final InputBorder defaultBorder = const OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.0));
+
+  bool _haveError = false;
+
+  void handleRegister() async {
+    final resRegister = await register(
+      usernameController.text, 
+      emailController.text, 
+      passwordController.text,
+      firstNameController.text, 
+      lastNameController.text,
+    );
+
+    if (resRegister['status'] < 400) {
+      final res = await login(emailController.text, passwordController.text);
+      navigateToMenu(res['user'], res['token'], context);
+    } else {
+      setState(() {
+        _haveError = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,116 +50,116 @@ class _RegisterScreenState extends State<RegisterScreen> {
         backgroundColor: Colors.transparent,
         body: ListView(
           children: <Widget>[
-            SvgPicture.asset("images/sir.svg"),
+            SvgPicture.asset("images/sir.svg", height: 250.0),
+            const SizedBox(height: 20.0),
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
+              child: Text(
+                'Registro Usuario',
+                style: Theme.of(context).textTheme.headline2,
+              ),
             ),
+            !_haveError ? Container() :
             Container(
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
-              child: TextField(
-                style: const TextStyle(color: Colors.white),
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 1.0)),
-                  labelText: 'Usuario',
+              child: const Text(
+                'Error al registrarse',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.red
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: defaultEdges,
               child: TextField(
-                style: const TextStyle(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1,
+                controller: usernameController,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  labelStyle: Theme.of(context).textTheme.bodyText1,
+                  enabledBorder: defaultBorder,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: defaultEdges,
+                    child: TextField(
+                      style: Theme.of(context).textTheme.bodyText1,
+                      controller: firstNameController,
+                      decoration: InputDecoration(
+                        labelText: 'Nombres',
+                        labelStyle: Theme.of(context).textTheme.bodyText1,
+                        enabledBorder: defaultBorder,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: defaultEdges,
+                    child: TextField(
+                      style: Theme.of(context).textTheme.bodyText1,
+                      controller: lastNameController,
+                      decoration: InputDecoration(
+                        labelText: 'Apellidos',
+                        labelStyle: Theme.of(context).textTheme.bodyText1,
+                        enabledBorder: defaultBorder,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: defaultEdges,
+              child: TextField(
+                style: Theme.of(context).textTheme.bodyText1,
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 1.0)),
+                decoration: InputDecoration(
                   labelText: 'Email',
+                  labelStyle: Theme.of(context).textTheme.bodyText1,
+                  enabledBorder: defaultBorder,
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: defaultEdges,
               child: TextField(
-                style: const TextStyle(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1,
                 obscureText: true,
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 1.0)),
+                decoration: InputDecoration(
                   labelText: 'Contraseña',
+                  labelStyle: Theme.of(context).textTheme.bodyText1,
+                  enabledBorder: defaultBorder,
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                style: const TextStyle(color: Colors.white),
-                controller: firstnameController,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 1.0)),
-                  labelText: 'Nombre',
+              padding: defaultEdges,
+              child: ElevatedButton(
+                child: const Text('Registrarse'),
+                onPressed: handleRegister,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateColor.resolveWith((states) => Theme.of(context).primaryColor),
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-              child: TextField(
-                style: const TextStyle(color: Colors.white),
-                controller: lastnameController,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.white, width: 1.0)),
-                  labelText: 'Apellido',
-                ),
-              ),
-            ),
-            Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateColor.resolveWith(
-                          (states) => Theme.of(context).primaryColor)),
-                  child: const Text('Registrarse'),
-                  onPressed: () {
-                    
-                  },
-                )),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text(
-                  '¿No tienes cuenta?',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
-                ),
+                Text('¿No tienes cuenta?', style: Theme.of(context).textTheme.bodyText1),
                 TextButton(
-                  child: const Text(
-                    'Iniciar Sesión',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                        (route) => false);
-                  },
+                  child: const Text('Iniciar Sesión', style: TextStyle(fontSize: 16)),
+                  onPressed: () => navigateToLogin(context),
                 )
               ],
-              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ],
         ),

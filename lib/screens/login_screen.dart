@@ -1,9 +1,8 @@
-import 'package:am2_library_project/screens/main_navigation_menu_screen.dart';
 import 'package:am2_library_project/widgets/gradient_background.dart';
-import 'package:am2_library_project/screens/register_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
+import 'package:am2_library_project/helpers/navigate.dart';
 import 'package:am2_library_project/services/auth.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,28 +13,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var _haveError = false;
+  bool _haveError = false;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void navigateToRegister() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute( builder: (context) => const RegisterScreen()),
-      (route) => false,
-    );
-  }
-
-  void navigateToMenu(Map user, String token) {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute( builder: (context) => MainNavigationMenuScreen(user: user)),
-      (route) => false,
-    );
-  }
-
-  void handleLogin() async{
+  void handleLogin() async {
     final res = await login(emailController.text, passwordController.text);
 
     if (res.containsKey('status')) {
@@ -49,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       }
     } else if (res.containsKey('user')) {
-      navigateToMenu(res['user'], res['token']);
+      navigateToMenu(res['user'], res['token'], context);
     }
   }
 
@@ -132,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Registrarse',
                     style: TextStyle(fontSize: 16),
                   ),
-                  onPressed: navigateToRegister,
+                  onPressed: () => navigateToRegister(context),
                 ),
               ],
             ),

@@ -17,3 +17,21 @@ Future login(String email, String password) async {
     return { 'status': 400, 'error': 'Error al iniciar sesión' };
   }
 }
+
+Future register(String username, String email, String password, String firstName, String lastName) async {
+  try {
+    final response = await post(
+      Uri.parse(URI + 'user/'),
+      body: {
+        'username': username,
+        'email': email,
+        'password': password,
+        'firstName': firstName,
+        'lastName': lastName,
+      }
+    );
+    return json.decode(response.body);
+  } catch(err) {
+    return { 'status': 400, 'error': 'Error al registrarse' };
+  }
+}
