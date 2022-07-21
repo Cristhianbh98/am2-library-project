@@ -48,22 +48,20 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
               child: Text(
-                'Iniciar Sesión',
+                'login',
                 style: Theme.of(context).textTheme.headline2,
               ),
             ),
-            !_haveError ? Container() :
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              child: const Text(
-                'Error al iniciar sesión',
-                style: TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.red
-                ),
-              ),
-            ),
+            !_haveError
+                ? Container()
+                : Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      'Error al iniciar sesión',
+                      style: TextStyle(fontSize: 12.0, color: Colors.red),
+                    ),
+                  ),
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
@@ -73,7 +71,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Correo',
                   labelStyle: Theme.of(context).textTheme.bodyText1,
                   enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 1.0,),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
                   ),
                 ),
               ),
@@ -88,7 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Contraseña',
                   labelStyle: Theme.of(context).textTheme.bodyText1,
                   enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 1.0,),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 1.0,
+                    ),
                   ),
                 ),
               ),
@@ -97,7 +101,8 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateColor.resolveWith((states) => Theme.of(context).primaryColor),
+                  backgroundColor: MaterialStateColor.resolveWith(
+                      (states) => Theme.of(context).primaryColor),
                 ),
                 child: Text(
                   'Login',
@@ -109,7 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('¿No tienes cuenta?', style: Theme.of(context).textTheme.bodyText1),
+                Text('¿No tienes cuenta?',
+                    style: Theme.of(context).textTheme.bodyText1),
                 TextButton(
                   child: const Text(
                     'Registrarse',
