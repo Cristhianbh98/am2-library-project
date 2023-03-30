@@ -1,8 +1,6 @@
-# Library Project
+# Mobile Applications II Project
 
-Proyecto de Aplicaciones Moviles II.
-
-# Integrantes
+## Members
 
 - Bacusoy Cristhian
 - Mera Diego
